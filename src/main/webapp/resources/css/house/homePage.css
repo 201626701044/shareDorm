@@ -1,0 +1,266 @@
+*{
+     margin:0px;
+     padding:0px;
+
+ }
+
+.main{
+    width: 1100px;
+    margin: 0 auto;
+}
+/*页首部分开始*/
+
+.top{
+    height: 100px;
+    margin-top: 15px;
+}
+.top .logo a img{
+    width: 200px;
+    height: 100px;
+}
+.top .nav ul li{
+    float: right;
+    list-style: none;
+    margin-top: 10px;
+    padding: 0px 20px 0px 10px;
+    border-left: 2px dotted darkgray;
+
+}
+.top .nav ul li a{
+    text-decoration: none;
+    font: 15px  Microsoft YaHei ;
+    color:grey;
+}
+.top .nav ul li a:hover{
+    text-decoration: underline ;
+    color: coral;
+}
+.search{
+    float: right;
+    margin: -45px 40px 0px 0px;
+}
+.search1{
+    width: 430px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid coral;
+}
+.search input {
+    border: 2px solid coral;
+    border-radius: 5px;
+}
+/*选择区开始*/
+
+.center-nav ul{
+    margin-top: 18px;
+    list-style: none;
+    background-color: salmon;
+    overflow: hidden;
+}
+.center-nav ul li{
+    float: left;
+
+}
+.center-nav ul li a{
+    display: block;
+    width: 140px;
+    text-align: center;
+    padding: 10px 0px;
+    color: white;
+    text-decoration: none;
+    font-size:18px;
+}
+.center-nav ul li a:hover{
+    background-color: chocolate;
+}
+.search-title{
+    padding: 10px 5px;
+}
+.search-title .big{
+    font-weight: bold;
+    color:#8f8f8f;
+}
+.search-title a{
+    text-decoration: none;
+    color:grey;
+}
+.search-title a:hover{
+    text-decoration: underline;
+    color: coral;
+}
+.sort-select{
+    border: 1px solid gainsboro;
+    padding: 15px;
+}
+.sort{
+    margin: 10px;
+}
+.sort-line{
+    margin: 10px 0px;
+}
+.sort-left{
+    float: left;
+    padding-left: 15px;
+    font-size: 14px;
+    color: #333;
+}
+.sort-right a  {
+    text-decoration: none;
+    color: grey;
+    display: inline-block;
+    width: 90px;
+}
+.sort-right a:hover{
+    text-decoration: underline;
+    color: coral;
+}
+.sort-right .active{
+    color: salmon;
+}
+.sort-line{
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #f0f0f0;
+}
+.sort-right .wither
+{
+    width: 110px;
+}
+/*标签开始*/
+
+.title-line{
+    border: 2px solid coral ;
+    margin-bottom: 15px;
+}
+.title ul {
+    overflow: hidden;
+    margin-top: 20px;
+   list-style: none;
+
+}
+.title ul li{
+    float: left;
+    border: 1px gainsboro solid;
+}
+.title ul li a{
+    text-decoration: none;
+    color:grey;
+    font-size: 18px;
+    padding: 10px 0px;
+    display: block;
+    width: 140px;
+    text-align: center;
+}
+.title ul li a:hover{
+   font-weight: bold;
+}
+.title .all {
+    background-color: coral;
+    color: white;
+}
+
+/*房屋区域开始*/
+.content{
+    width: 100%;
+    border: 1px red solid;
+    height: 300px;
+    margin: 10px 0px;
+    padding: 10px 0px;
+
+}
+.content .content-left{
+    float: left;
+    width: 245px;
+    height: 100%;
+}
+.content .content-left #outer ul{
+    list-style: none;
+}
+.content .content-left #outer ul img{
+    margin-left: 10px;
+}
+
+.content-right{
+    float: left;
+    width: 750px;
+    height: 100%;
+    position: relative;
+}
+
+/*每拦房屋*/
+.content-right .one{
+    font-size: 25px;
+    margin: 12px;
+}
+.content-right a{
+    text-decoration:none ;
+    out-line: none;
+    color: black;
+}
+.content-right .one a:hover{
+    color: coral;
+}
+.content-right .two{
+    font-size: 20px;
+    margin: 12px;
+    color: #666666;
+}
+.content-right .five{
+    color: coral;
+    position: absolute;
+    font-size: 30px;
+    bottom: 10px;
+    left: 30px;
+    margin: 12px;
+}
+.content-right-bottom .photo{
+    width: 90px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: coral;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    position: absolute;
+    bottom: 26px;
+    left: 155px;
+}
+.content-right img{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin:0 12px;
+}
+.content-right .three{
+    color: #666666;
+    font-size: 20px;
+    display: inline;
+}
+.content-right-bottom .six{
+    width: 100px;
+    height: 40px;
+    /*border-radius: 15px;*/
+    background-color: coral;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    position: absolute;
+    bottom: 26px;
+    right: 5px;
+}
+
+
+
+
+
+/*.title .shipin1{*/
+    /*display: block;*/
+    /*float: left;*/
+    /*padding-bottom: 10px;*/
+/*}*/
+/*.title .shipin{*/
+    /*display: block;*/
+    /*float: left;*/
+    /*margin-left:18px ;*/
+    /*margin-right: 5px;*/
+/*}*/

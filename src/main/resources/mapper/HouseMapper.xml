@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zoe.shareDorm.mapper.HouseMapper">
+    <resultMap type="com.zoe.shareDorm.po.House" id="houseMap">
+        <id column="house_id" property="houseId" />
+        <result column="house_name" property="houseName" />
+        <result column="rent_price" property="rentPrice" />
+        <result column="check_in_date" property="checkInDate" />
+        <result column="house_type" property="houseType" />
+        <result column="area" property="area" />
+        <result column="rent_num" property="rentNum" />
+        <result column="image" property="image" />
+        <result column="way" property="way" />
+        <result column="description" property="description" />
+        <result column="sex" property="sex" />
+        <association property="member" column="member_id"
+                     javaType="com.zoe.shareDorm.po.Member">
+            <id column="member_id" property="memberId" />
+            <result column="member_name" property="memberName" />
+        </association>
+        <association property="requests" column="req_id"
+                     javaType="com.zoe.shareDorm.po.Request">
+            <id column="req_id" property="reqId" />
+            <result column="nick_name" property="nickName" />
+        </association>
+    </resultMap>
+
+    <select id="queryHouseList" resultMap="houseMap">
+        SELECT
+        h.house_id,
+        h.house_name,
+        h.rent_price,
+        h.check_in_date,
+        h.house_type,
+        h.area,
+        h.rent_num,
+        h.image,
+        h.way,
+        h.description,
+        h.sex
+        FROM
+        tb_house h
+    </select>
+    <!--按地区查询-->
+    <select id="queryByArea" resultType="House">
+        select * from tb_house
+        <where>
+            <if test="area!=null and area !=''">
+                and area like concat('%',#{area},'%')
+            </if>
+        </where>
+    </select>
+</mapper>
+    
