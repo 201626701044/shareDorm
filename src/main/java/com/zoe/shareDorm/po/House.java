@@ -13,7 +13,7 @@ public class House {
     private Integer houseId;
     private String houseName;
     private Integer memberId;
-    private float rentPrice;
+    private Float rentPrice;
     private String checkInDate;
     private String houseType;
     private String area;
@@ -56,11 +56,11 @@ public class House {
         this.memberId = memberId;
     }
 
-    public float getRentPrice() {
+    public Float getRentPrice() {
         return rentPrice;
     }
 
-    public void setRentPrice(float rentPrice) {
+    public void setRentPrice(Float rentPrice) {
         this.rentPrice = rentPrice;
     }
 

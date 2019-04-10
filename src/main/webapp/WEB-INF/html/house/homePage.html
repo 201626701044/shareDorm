@@ -20,19 +20,136 @@
     <h1 class="title">房源列表</h1>
 </header>
 <div class="content">
-    <div class="content-block">
-        <!-- In data-popup attribute we specify CSS selector of popup we need to open -->
-        <p><a href="#" class="create-actions">选择操作</a></p>
-    </div>
-</div>
-<div class="content">
 
     <div class="searchbar row">
         <div class="search-input col-85">
             <input type="search" id='search' placeholder='输入关键字...'/>
         </div>
-        <a class="button button-fill button-primary col-15"><span class="icon icon-search"></span></a>
+        <a class="button button-fill button-primary col-15" id="icon"><span class="icon icon-search" id="icon1"></span></a>
     </div>
+
+    <div class="sort-select">
+
+        <!--位置选择-->
+        <div class="sort">
+
+            <div class="sort-left">
+                <span class="">位置：</span>
+            </div>
+
+            <div class="sort-right" id="area1234">
+                <a  href="javaScript:;" class="active lookfor" data-area="no">不限</a>
+                <a class="lookfor"  data-area="红谷滩"   href="javaScript:;" >红谷滩</a>
+                <a class="lookfor"  data-area="西湖"   href="javaScript:;" >西湖</a>
+                <a class="lookfor"  data-area="青山湖"   href="javaScript:;" >青山湖</a>
+                <a class="lookfor"  data-area="高新区"   href="javaScript:;" >高新区</a>
+                <a class="lookfor"  data-area="南昌县"   href="javaScript:;" >南昌县</a>
+                <a class="lookfor"  data-area="青云谱"   href="javaScript:;" >青云谱</a>
+                <a class="lookfor"  data-area="经开区"   href="javaScript:;" >经开区</a>
+                <a class="lookfor"  data-area="湾里"   href="javaScript:;" >湾里</a>
+                <a class="lookfor"  data-area="进贤"   href="javaScript:;" >进贤</a>
+                <a class="lookfor"  data-area="安义"   href="javaScript:;" >安义</a>
+            </div>
+
+        </div>
+
+        <div class="sort-line"></div>
+
+        <!--入驻人数-->
+        <div class="sort">
+
+            <div class="sort-left">
+                <span class="">人数：</span>
+            </div>
+
+            <div class="sort-right" id="num1234">
+                <a  href="javaScript:;" class="active num" data-num="no">不限</a>
+                <a  href="javaScript:;"class="num"  data-num="单人入住">单人入住</a>
+                <a  href="javaScript:;"class="num"  data-num="双人入住">双人入住</a>
+                <a  href="javaScript:;"class="num"  data-num="三人入住">三人入住</a>
+                <a  href="javaScript:;"class="num"  data-num="四人入住">四人入住</a>
+                <a href="#" class="wither"><!--五室及以上--></a>
+            </div>
+
+        </div>
+        <div class="sort-line"></div>
+
+        <!--预期价格-->
+        <div class="sort">
+
+            <div class="sort-left">
+                <span class="">价格：</span>
+            </div>
+
+            <div class="sort-right" id="price1234">
+                <a  href="javaScript:;" class="active price" data-priceMin="0" data-priceMax="50000">不限</a>
+
+                <a  href="javaScript:;" class="price" data-priceMin="0" data-priceMax="500">500元以下</a>
+                <a href="javaScript:;" class="price" data-priceMin="500" data-priceMax="1000">500-1000元</a>
+                <a href="javaScript:;" class="price" data-priceMin="1000" data-priceMax="1500">1000-1500元</a>
+                <a href="javaScript:;" class="price" data-priceMin="1500" data-priceMax="2000">1500-2000元</a>
+                <a href="javaScript:;" class="price" data-priceMin="2500" data-priceMax="3000">2500-3000元</a>
+                <a href="javaScript:;" class="price" data-priceMin="300" data-priceMax="4000">3000-4000元</a>
+                <a href="javaScript:;" class="price" data-priceMin="4000" data-priceMax="50000">4000元以上</a>
+            </div>
+
+        </div>
+
+        <div class="sort-line"></div>
+
+        <!--预约时间-->
+        <div class="sort">
+
+            <div class="sort-left">
+                <span class="">时间：</span>
+            </div>
+
+            <div class="sort-right" id="time1234">
+                <a href="javaScript:;" class="active time" data-time="0">不限</a>
+                <a href="javaScript:;" class="time" data-time="0">最近入住</a>
+                <a href="javaScript:;" class="time" data-time="1">一月后入住</a>
+                <a href="javaScript:;" class="time" data-time="2">两月后入住</a>
+                <a href="javaScript:;" class="time" data-time="3">三月后入住</a>
+                <a href="#" class="wither"><!--五室及以上--></a>
+            </div>
+
+        </div>
+
+        <div class="sort-line"></div>
+
+        <!--性别选择-->
+        <div class="sort">
+
+            <div class="sort-left">
+                <span class="">性别：</span>
+            </div>
+
+            <div class="sort-right" id="sex1234">
+                <a href="javaScript:;" class="active sex" data-sex="no">不限</a>
+                <a href="javaScript:;" class="sex" data-sex="男">男</a>
+                <a href="javaScript:;" class="sex" data-sex="女">女</a>
+            </div>
+
+        </div>
+        <div class="sort-line"></div>
+
+        <!--性别选择-->
+        <div class="sort">
+
+            <div class="sort-left">
+                <span class="">方式：</span>
+            </div>
+
+            <div class="sort-right" id="way1234">
+                <a href="javaScript:;" class="active way" data-way="no">不限</a>
+                <a href="javaScript:;" class="way" data-way="室友合租">室友合租</a>
+                <a href="javaScript:;" class="way" data-way="业主出租">业主出租</a>
+            </div>
+
+        </div>
+        <div class="sort-line"></div>
+    </div>
+    <!--选择结束-->
 
         <div class="content-block-title">房源</div>
         <div class="list-block media-list" id="listtest">

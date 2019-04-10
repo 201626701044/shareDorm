@@ -28,29 +28,55 @@
     </resultMap>
 
     <select id="queryHouseList" resultMap="houseMap">
-        SELECT
-        h.house_id,
-        h.house_name,
-        h.rent_price,
-        h.check_in_date,
-        h.house_type,
-        h.area,
-        h.rent_num,
-        h.image,
-        h.way,
-        h.description,
-        h.sex
-        FROM
-        tb_house h
-    </select>
-    <!--按地区查询-->
-    <select id="queryByArea" resultType="House">
-        select * from tb_house
+        SELECT * FROM tb_house h
         <where>
-            <if test="area!=null and area !=''">
-                and area like concat('%',#{area},'%')
+            <if test="area != null " >
+                and area =#{area}
+            </if>
+            <if test="num !=null">
+                and rent_num =#{num}
+            </if>
+            <if test="priceMin !=null and priceMax !=null">
+                and rent_price between #{priceMin} and #{priceMax}
+            </if>
+            <if test="checkInDate !=null ">
+                and check_in_date >=#{checkInDate}
+            </if>
+            <if test="sex!=null">
+                and sex =#{sex}
+            </if>
+            <if test="way!=null">
+                and way =#{way}
             </if>
         </where>
     </select>
+
+    <!--<select id="queryHouseList" resultMap="houseMap">-->
+        <!--SELECT-->
+        <!--h.house_id,-->
+        <!--h.house_name,-->
+        <!--h.rent_price,-->
+        <!--h.check_in_date,-->
+        <!--h.house_type,-->
+        <!--h.area,-->
+        <!--h.rent_num,-->
+        <!--h.image,-->
+        <!--h.way,-->
+        <!--h.description,-->
+        <!--h.sex-->
+        <!--FROM-->
+        <!--tb_house h-->
+        <!---->
+    <!--</select>-->
+    <!--&lt;!&ndash;按地区查询&ndash;&gt;-->
+    <!--<select id="queryByArea" resultType="House">-->
+        <!--select * from tb_house-->
+        <!--<where>-->
+            <!--<if test="area!=null and area !=''">-->
+                <!--and area like concat('%',#{area},'%')-->
+            <!--</if>-->
+        <!--</where>-->
+    <!--</select>-->
+
 </mapper>
     

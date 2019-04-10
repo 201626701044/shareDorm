@@ -3,7 +3,7 @@ $(function() {
 	function getlist(e) {
 		$.ajax({
 			url : "/houseadmin/gethouselist",
-			type : "get",
+			type : "post",
 			dataType : "json",
 			success : function(data) {
 				if (data.success) {
@@ -13,36 +13,90 @@ $(function() {
 		});
 	}
 
-	$(document).on('click','.create-actions', function () {
-		var buttons1 = [
-			{
-				text: '请选择',
-				label: true
-			},
-			{
-				text: '发布请求',
-				bold: true,
-				color: 'danger',
-				onClick: function() {
-					$.alert("你选择了“发布请求“");
-				}
-			},
-			{
-				text: '发布房源',
-				onClick: function() {
-					$.alert("你选择了“发布房源“");
+	$(".way").click(function(){
+		$(".way").removeClass("active");
+		$(this).addClass("active");
+		getlistBycondition();});
+
+	$(".sex").click(function(){
+		$(".sex").removeClass("active");
+		$(this).addClass("active");
+		getlistBycondition();});
+
+	$("#icon").click(function () {
+            alert("a");
+
+			$.get("/houseadmin/queryByArea",
+				function(data) {
+
+				});
+		});
+
+
+	function getlistBycondition(e) {
+     // 创建house对象
+		var houseVo = {};
+		// 获取表单里的数据并填充进对应的houseVo属性中
+	//	houseVo.area = $('#area1234 .active').dataset.area;
+	//	houseVo.num = $('#num1234 .active').dataset.num;
+	//	houseVo.priceMin = $('#price1234 .active').dataset.priceMin;
+	//	houseVo.priceMax = $('#price1234 .active').dataset.priceMax;
+	//	houseVo.time = $('#time1234 .active').dataset.time;
+		houseVo.sex = $('#sex1234 .active').attr("data-sex");
+		houseVo.way =$('#way1234 .active').attr("data-way");//"室友合租";// $('#way1234 .active').dataset.way;
+		alert($('#way1234 .active').attr("data-way"));
+		alert(houseVo.way);
+		// 生成表单对象，用于接收参数并传递给后台
+		var formData = new FormData();
+		// 将shop json对象转成字符流保存至表单对象key为shopStr的的键值对里
+		formData.append('houseStr', JSON.stringify(houseVo));
+		// 将数据提交至后台处理相关操作
+		$.ajax({
+			url : "/houseadmin/gethouselist",
+			type : "post",
+			data : formData,
+			contentType : false,
+			processData : false,
+			cache : false,
+			success : function(data) {
+				if (data.success) {
+					handleList(data.houseList);
 				}
 			}
-		];
-		var buttons2 = [
-			{
-				text: '取消',
-				bg: 'danger'
-			}
-		];
-		var groups = [buttons1, buttons2];
-		$.actions(groups);
-	});
+		});
+	}
+
+
+	// $(document).on('click','.create-actions', function () {
+	// 	var buttons1 = [
+	// 		{
+	// 			text: '请选择',
+	// 			label: true
+	// 		},
+	// 		{
+	// 			text: '发布请求',
+	// 			bold: true,
+	// 			color: 'danger',
+	// 			onClick: function() {
+	// 				$.alert("你选择了“发布请求“");
+	// 			}
+	// 		},
+	// 		{
+	// 			text: '发布房源',
+	// 			onClick: function() {
+	// 				$.alert("你选择了“发布房源“");
+	// 			}
+	// 		}
+	// 	];
+	// 	var buttons2 = [
+	// 		{
+	// 			text: '取消',
+	// 			bg: 'danger'
+	// 		}
+	// 	];
+	// 	var groups = [buttons1, buttons2];
+	// 	$.actions(groups);
+	// });
 
 	//显示店铺列表
 	function handleList(data) {
@@ -67,7 +121,7 @@ $(function() {
 						"	</li>"
 
 				}
-				alert(content);
+			//	alert(content);
 			$(".content ul").html("");
 			$(".content ul").html(content);
 			//$(".content").html(content);
