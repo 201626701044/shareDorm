@@ -29,7 +29,7 @@ public class HouseMapperTest extends BaseTest {
 
         HouseVo houseVo=new HouseVo();
         houseVo.setArea("青山湖");
-        houseVo.setNum("单人入住");
+//        houseVo.setNum("单人入住");
         List<House> house = houseMapper.queryHouseList(houseVo);
         System.out.println(house.size());
 

@@ -37,10 +37,10 @@ public class HouseManagementController {
             // 1.接收并转化相应的参数，包
             String   houseStr = HttpServletRequestUtil.getString(request, "houseStr");
             System.out.println("houseStr="+houseStr);
-
             HouseVo  houseVo=null;
             if (houseStr==null) houseVo=new HouseVo();
-            else {   // ObjectMapper是com.fasterxml.jackson.databind.ObjectMapper;
+            else {
+                // ObjectMapper是com.fasterxml.jackson.databind.ObjectMapper;
                 // 用于json和pojo对象的转换。
                 ObjectMapper mapper = new ObjectMapper();
 
