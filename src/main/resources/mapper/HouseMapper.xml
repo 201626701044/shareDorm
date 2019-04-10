@@ -31,7 +31,7 @@
         SELECT * FROM tb_house h
         <where>
             <if test="area != null " >
-                and area =#{area}
+                and area like concat('%',#{area},'%')
             </if>
             <if test="num !=null">
                 and rent_num =#{num}

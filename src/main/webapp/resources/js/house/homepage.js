@@ -29,14 +29,16 @@ $(function() {
 	// 	getlistBycondition();});
 	//
 
+	// $("#icon").click(function () {
+    //         alert("a");
+	// 		$.post("/houseadmin/gethouselist",
+	// 			function(data) {
+	//
+	// 			});
+	// 	});
 	$("#icon").click(function () {
-            alert("a");
-
-			$.get("/houseadmin/queryByArea",
-				function(data) {
-
-				});
-		});
+		getlistBycondition();
+	});
 
 
 	function getlistBycondition(e) {
@@ -45,7 +47,12 @@ $(function() {
 		// 获取表单里的数据并填充进对应的houseVo属性中
 		//houseVo.area = $('#area1234 .active').dataset.area;
 		// 未找到html5的data属性没起作用的原因，先用.attr
-		houseVo.area = $('#area1234 .active').attr("data-area");
+	//	houseVo.area = $('#search').val();
+	// 	alert(temp);
+		var temp= $('#area1234 .active').attr("data-area");
+		if (temp!="0") { houseVo.area=temp;
+
+		  alert(houseVo.area);}
 		//	houseVo.num = $('#num1234 .active').dataset.num;
 		// 	houseVo.num = $('#num1234 .active').attr("data-num");
 		//	houseVo.priceMin = $('#price1234 .active').dataset.priceMin;
@@ -55,7 +62,11 @@ $(function() {
 		//	houseVo.time = $('#time1234 .active').dataset.time;
 		// 	houseVo.time = $('#time1234 .active').attr("data-time");
 		// 	houseVo.sex = $('#sex1234 .active').attr("data-sex");
-	 	houseVo.way =$('#way1234 .active').attr("data-way");
+	 	//houseVo.way =$('#way1234 .active').attr("data-way");
+		temp= $('#way1234 .active').attr("data-way");
+		if (temp!="0") { houseVo.way=temp;
+
+			alert(houseVo.way);}
 		// alert($('#way1234 .active').attr("data-way"));
 		// 生成表单对象，用于接收参数并传递给后台
 		var formData = new FormData();

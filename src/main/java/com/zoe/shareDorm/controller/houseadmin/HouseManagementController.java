@@ -40,6 +40,7 @@ public class HouseManagementController {
             HouseVo  houseVo=null;
             if (houseStr==null) houseVo=new HouseVo();
             else {
+
                 // ObjectMapper是com.fasterxml.jackson.databind.ObjectMapper;
                 // 用于json和pojo对象的转换。
                 ObjectMapper mapper = new ObjectMapper();
