@@ -18,16 +18,35 @@ $(function() {
 		$(this).addClass("active");
 		getlistBycondition();});
 
+	$(".num").click(function(){
+
+		$(".num").removeClass("active");
+		$(this).addClass("active");
+		getlistBycondition();});
+
+	$(".time").click(function(){
+
+		$(".time").removeClass("active");
+		$(this).addClass("active");
+		getlistBycondition();});
+
 	$(".way").click(function(){
+
 		$(".way").removeClass("active");
 		$(this).addClass("active");
 		getlistBycondition();});
 
-	// $(".sex").click(function(){
-	// 	$(".sex").removeClass("active");
-	// 	$(this).addClass("active");
-	// 	getlistBycondition();});
-	//
+
+	$(".price").click(function(){
+		$(".price").removeClass("active");
+		$(this).addClass("active");
+		getlistBycondition();});
+
+	$(".sex").click(function(){
+		$(".sex").removeClass("active");
+		$(this).addClass("active");
+		getlistBycondition();});
+
 
 	// $("#icon").click(function () {
     //         alert("a");
@@ -47,27 +66,72 @@ $(function() {
 		// 获取表单里的数据并填充进对应的houseVo属性中
 		//houseVo.area = $('#area1234 .active').dataset.area;
 		// 未找到html5的data属性没起作用的原因，先用.attr
-	//	houseVo.area = $('#search').val();
-	// 	alert(temp);
+		houseVo.area = $('#search').val();
+
 		var temp= $('#area1234 .active').attr("data-area");
-		if (temp!="0") { houseVo.area=temp;
+		if (temp!="0") {
+			houseVo.area=temp;
+			alert(houseVo.area);
+		}
 
-		  alert(houseVo.area);}
-		//	houseVo.num = $('#num1234 .active').dataset.num;
-		// 	houseVo.num = $('#num1234 .active').attr("data-num");
-		//	houseVo.priceMin = $('#price1234 .active').dataset.priceMin;
-		// 	houseVo.priceMin = $('#price1234 .active').attr("data-priceMin");
-		//	houseVo.priceMax = $('#price1234 .active').dataset.priceMax;
-		// 	houseVo.priceMax = $('#price1234 .active').attr("data-priceMax");
-		//	houseVo.time = $('#time1234 .active').dataset.time;
-		// 	houseVo.time = $('#time1234 .active').attr("data-time");
-		// 	houseVo.sex = $('#sex1234 .active').attr("data-sex");
-	 	//houseVo.way =$('#way1234 .active').attr("data-way");
+		var temp= $('#num1234 .active').attr("data-num");
+		if (temp!="0") {
+			houseVo.num=temp;
+			alert(houseVo.num);
+		}
+
+		temp= $('#price1234 .active').attr("data-priceMin");
+		if (temp!="0") {
+			alert(temp);
+			houseVo.priceMin=temp;
+			alert(houseVo.priceMin);
+		}
+
+		temp= $('#price1234 .active').attr("data-priceMax");
+		if (temp!="0") {
+			houseVo.priceMax=temp;
+			alert(houseVo.priceMax);
+		}
+
+		temp= $('#time1234 .active').attr("data-time");
+		if (temp!="0") {
+			houseVo.time=temp;
+			alert(houseVo.time);
+			//获取当前时间
+			var now = new Date();
+			var calendar = new GregorianCalendar();
+			calendar.setTime(now);
+			var dateFormat = new SimpleDateFormat("yyyy-MM-dd");//可以方便地修改日期格式
+
+			if (temp.equals("1")) {
+				calendar.add(Calendar.MONTH, 1); //把日期往后增加一个月,
+
+			} else if (temp.equals("2")) {
+				calendar.add(Calendar.MONTH, 2); //把日期往后增加一个月,
+
+			} else if (temp.equals("3")) {
+				calendar.add(Calendar.MONTH, 3); //把日期往后增加一个月,
+
+			}
+			var date1 = calendar.getTime(); //
+			temp = dateFormat.format(date1);
+			alert(temp);
+			houseVo.time=temp;
+			alert(houseVo.time);
+		 }
+
+		temp= $('#sex1234 .active').attr("data-sex");
+		if (temp!="0") {
+			houseVo.sex=temp;
+			alert(houseVo.sex);
+		}
+
 		temp= $('#way1234 .active').attr("data-way");
-		if (temp!="0") { houseVo.way=temp;
+		if (temp!="0") {
+			houseVo.way=temp;
+			alert(houseVo.way);
+		}
 
-			alert(houseVo.way);}
-		// alert($('#way1234 .active').attr("data-way"));
 		// 生成表单对象，用于接收参数并传递给后台
 		var formData = new FormData();
 		// 将shop json对象转成字符流保存至表单对象key为shopStr的的键值对里

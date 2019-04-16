@@ -9,20 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 
 public class HouseMapperTest extends BaseTest {
 
     @Autowired
     private HouseMapper houseMapper;
 
-    @Test
-    public void testQueryByArea(){
 
-        String area = "新";
-        List<House> house = houseMapper.queryByArea(area);
-        System.out.println();
-
-    }
 
     @Test
     public void testQueryList(){
@@ -36,7 +31,18 @@ public class HouseMapperTest extends BaseTest {
     }
 
     @Test
-    public void testQueryHouseListAndCount(){
+    public void testInsertHouse() throws Exception{
+        House house = new House();
+        house.setHouseName("测试2");
+        house.setRentPrice((float) 700);
+        house.setHouseType("单间独卫");
+        house.setArea("西湖");
+        house.setImage("/img/house/01.jpg");
+        house.setWay("业主出租");
+
+        int effectedNum = houseMapper.insert(house);
+        assertEquals(1,effectedNum);
+
 
     }
 }

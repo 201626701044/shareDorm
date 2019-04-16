@@ -8,7 +8,7 @@ public class HouseVo {
     private String houseName;
     private Integer priceMin;
     private Integer priceMax;
-    private Integer time;
+    private String time;
     private String houseType;
     private String area;
     private String num;
@@ -49,11 +49,11 @@ public class HouseVo {
         this.priceMax = priceMax;
     }
 
-    public Integer getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Integer time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

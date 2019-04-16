@@ -11,9 +11,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  */
 public class HouseAdminController {
+
+    @RequestMapping(value = "/homePage")
+    public String houseList() {
+        return "house/homePage";
+    }
+
+    @RequestMapping(value = "/push")
+    public String housePush() {
+        return "house/push";
+    }
+
+    @RequestMapping(value = "/houselist")
+    public String house() {
+        // 转发至店铺列表页面
+        return "house/houselist";
+    }
+
     @RequestMapping(value = "/houseoperation")
-    public String houseOperation(){
-        // 转发至店铺注册/编辑页面
+    public String shopOperation(){
+        // 转发至房源注册/编辑页面
         //在springmvc的配置中已经设定了前后缀
         return "house/houseoperation";
     }

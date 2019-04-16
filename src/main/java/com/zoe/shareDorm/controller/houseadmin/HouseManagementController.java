@@ -6,8 +6,10 @@ import com.zoe.shareDorm.po.House;
 import com.zoe.shareDorm.po.Member;
 import com.zoe.shareDorm.po.Request;
 import com.zoe.shareDorm.service.HouseService;
+import com.zoe.shareDorm.util.CodeUtil;
 import com.zoe.shareDorm.util.HttpServletRequestUtil;
 import com.zoe.shareDorm.vo.HouseVo;
+import com.zoe.shareDorm.vo.ImageHolder;
 import org.springframework.beans.Mergeable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 @Controller
 @RequestMapping("/houseadmin")
@@ -55,7 +61,6 @@ public class HouseManagementController {
                     return modelMap;
                 }
             }
-
             List<House> houseList = houseService.queryHouseList(houseVo);
             modelMap.put("houseList", houseList);
             modelMap.put("success", true);
@@ -66,24 +71,43 @@ public class HouseManagementController {
         return modelMap;
     }
 
-    @RequestMapping(value = "/homePage")
-    public String houseList() {
-        return "house/homePage";
-    }
 
 
-    @RequestMapping(value = "/queryByArea", method = RequestMethod.GET)
+
     @ResponseBody
-    private Map<String, Object> queryByArea(@RequestParam("area") String area) {
-        Map<String, Object> modelMap = new HashMap<String, Object>();
-        try {
-            List<House> houseList = houseService.queryByArea(area);
-            modelMap.put("houseList", houseList);
-            modelMap.put("success", true);
-        } catch (Exception e) {
-            modelMap.put("success", false);
-            modelMap.put("errMsg", e.getMessage());
-        }
-        return modelMap;
+    @RequestMapping("addHouse")
+    public String addHouse(House house, MultipartFile file, HttpServletRequest request) throws IOException {
+
+        System.out.println("提交的房源："+house);
+        //定义图片上传后的路径
+        String filePath = request.getSession().getServletContext().getRealPath("/upload");
+        String newFileName = fileOperate(file,filePath);
+        house.setImage(newFileName);
+        System.out.println("最后的house"+house);
+        houseService.insert(house);
+        return "redirect:/gethouselist";
     }
+
+    /**
+     * 封装操作文件方法， 添加用户 和修改用户都会用到
+     * @param file
+     * @param filePath
+     * @return
+     */
+    private String fileOperate(MultipartFile file,String filePath) {
+        String originalFileName = file.getOriginalFilename();//获取原始图片的扩展名
+        System.out.println("图片原始名称："+originalFileName);
+        String newFileName = UUID.randomUUID()+originalFileName;  //新的文件名称
+        System.out.println("新的文件名称："+newFileName);
+        File targetFile = new File(filePath,newFileName); //创建新文件
+        try {
+            file.transferTo(targetFile); //把本地文件上传到文件位置 , transferTo()是springmvc封装的方法，用于图片上传时，把内存中图片写入磁盘
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return newFileName;
+    }
+
 }

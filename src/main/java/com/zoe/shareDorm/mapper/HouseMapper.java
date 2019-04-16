@@ -11,5 +11,5 @@ public interface HouseMapper {
     //列出所有房源
     public List<House> queryHouseList(HouseVo houseVo);
 
-    List<House> queryByArea(@Param("area") String area);
+    public int insert(House house);
 }

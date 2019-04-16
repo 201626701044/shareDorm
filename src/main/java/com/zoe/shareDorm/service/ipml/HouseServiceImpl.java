@@ -20,8 +20,9 @@ public class HouseServiceImpl implements HouseService {
         return houseMapper.queryHouseList(houseVo);
     }
 
+
     @Override
-    public List<House> queryByArea(String area) {
-        return houseMapper.queryByArea(area);
+    public void insert(House house) {
+        houseMapper.insert(house);
     }
 }

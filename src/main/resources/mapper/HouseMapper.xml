@@ -50,7 +50,11 @@
             </if>
         </where>
     </select>
-
+    <!-- 添加房源 -->
+    <insert id="insert" parameterType="House" >
+			insert into tb_house (house_name,rent_price,house_type,area,image,way)
+			VALUES (#{houseName},#{rentPrice},#{houseType},#{area},#{image},#{way})
+		</insert>
     <!--<select id="queryHouseList" resultMap="houseMap">-->
         <!--SELECT-->
         <!--h.house_id,-->
