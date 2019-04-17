@@ -5,7 +5,7 @@ import com.zoe.shareDorm.po.House;
 
 import java.util.List;
 
-public class HouseExcution {
+public class HouseExecution {
     // 结果状态 为整数，如0
     private int state;
 
@@ -21,25 +21,25 @@ public class HouseExcution {
     // House列表(查询房源列表的时候使用)
     private List<House> houseList;
 
-    public HouseExcution(){
+    public HouseExecution(){
 
     }
 
     // 房源操作失败的时候使用的构造器
-    public HouseExcution(HouseStateEnum stateEnum) {
+    public HouseExecution(HouseStateEnum stateEnum) {
         this.state = stateEnum.getState();
         this.stateInfo = stateEnum.getStateInfo();
     }
 
     // 房源操作成功的时候使用的构造器
-    public HouseExcution(HouseStateEnum stateEnum,House house) {
+    public HouseExecution(HouseStateEnum stateEnum, House house) {
         this.state = stateEnum.getState();
         this.stateInfo = stateEnum.getStateInfo();
         this.house = house;
     }
 
     // 房源操作成功的时候使用的构造器
-    public HouseExcution(HouseStateEnum stateEnum,List<House> houseList) {
+    public HouseExecution(HouseStateEnum stateEnum, List<House> houseList) {
         this.state = stateEnum.getState();
         this.stateInfo = stateEnum.getStateInfo();
         this.houseList = houseList;

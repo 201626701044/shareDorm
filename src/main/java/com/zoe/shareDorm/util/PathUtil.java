@@ -17,9 +17,21 @@ public class PathUtil {
         return basePath;
     }
     //依据不同的业务需求，返回项目图片子路径。如将图片分别存储在各自的店面下
-    public static String getHouseImagePath(long houseId){
+    public static String getHouseImagePath(Integer houseId){
         String imagePath = "/upload/images/item/house/" + houseId + "/";
         return imagePath.replace("/",seperator);
+    }
+    //依据不同的业务需求，返回项目图片子路径。如将图片分别存储在各自的店面下
+    public static String getHouseImagePathURL(String imagePath) {
+
+        return imagePath.replace(seperator,"/");
+    }
+
+
+    public static void main(String arg[]){
+
+        String imgpath=PathUtil.getHouseImagePath(1);
+        System.out.println(PathUtil.getHouseImagePathURL(imgpath));
     }
 
 }

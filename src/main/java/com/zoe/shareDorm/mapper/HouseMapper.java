@@ -11,5 +11,8 @@ public interface HouseMapper {
     //列出所有房源
     public List<House> queryHouseList(HouseVo houseVo);
 
-    public int insert(House house);
+    /**
+     * 插入房源
+     */
+    public int insertHouse(House house);
 }

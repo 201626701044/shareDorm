@@ -15,6 +15,7 @@
         <result column="way" property="way" />
         <result column="description" property="description" />
         <result column="sex" property="sex" />
+        <result column="enable_status" property="enableStatus" />
         <association property="member" column="member_id"
                      javaType="com.zoe.shareDorm.po.Member">
             <id column="member_id" property="memberId" />
@@ -25,6 +26,13 @@
             <id column="req_id" property="reqId" />
             <result column="nick_name" property="nickName" />
         </association>
+        <collection property="houseImgList" column="house_id"
+                    ofType="com.zoe.shareDorm.po.HouseImg">
+            <id column="house_img_id" property="houseImgId" />
+            <result column="detail_img" property="imgAddr" />
+            <result column="create_time" property="createTime" />
+            <result column="house_id" property="houseId" />
+        </collection>
     </resultMap>
 
     <select id="queryHouseList" resultMap="houseMap">
@@ -51,9 +59,10 @@
         </where>
     </select>
     <!-- 添加房源 -->
-    <insert id="insert" parameterType="House" >
-			insert into tb_house (house_name,rent_price,house_type,area,image,way)
-			VALUES (#{houseName},#{rentPrice},#{houseType},#{area},#{image},#{way})
+    <insert id="insertHouse" parameterType="com.zoe.shareDorm.po.House"
+            useGeneratedKeys="true" keyProperty="houseId" keyColumn="house_id">
+			insert into tb_house (house_name,rent_price,house_type,area,rent_num,image,way,description,sex,enable_status)
+			VALUES (#{houseName},#{rentPrice},#{houseType},#{area},#{rentNum},#{image},#{way},#{description},#{sex},#{enable_status})
 		</insert>
     <!--<select id="queryHouseList" resultMap="houseMap">-->
         <!--SELECT-->

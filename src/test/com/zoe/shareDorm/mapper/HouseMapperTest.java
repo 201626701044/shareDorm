@@ -40,7 +40,7 @@ public class HouseMapperTest extends BaseTest {
         house.setImage("/img/house/01.jpg");
         house.setWay("业主出租");
 
-        int effectedNum = houseMapper.insert(house);
+        int effectedNum = houseMapper.insertHouse(house);
         assertEquals(1,effectedNum);
 
 

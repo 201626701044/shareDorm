@@ -1,8 +1,17 @@
 package com.zoe.shareDorm.enums;
 
 public enum HouseStateEnum {
-    CHECK(0, "审核中"), OFFLINE(-1, "非法店铺"), SUCCESS(1, "操作成功"), PASS(2, "通过认证"), INNER_ERROR(-1001,
-            "内部系统错误"), NULL_HOUSEID(-1002, "HouseId为空"),NULL_HOUSE(-1003, "house信息为空");
+
+    CHECK(0, "审核中"),
+    OFFLINE(-1, "非法店铺"),
+    SUCCESS(1, "操作成功"),
+    PASS(2, "通过认证"),
+    DOWN(-2, "下架"),
+    EMPTY(-1000, "图片为空"),
+    INNER_ERROR(-1001, "内部系统错误"),
+    NULL_HOUSEID(-1002, "HouseId为空"),
+    NULL_HOUSE(-1003, "house信息为空");
+
     private int state;
     private String stateInfo;
     //不希望外部可以修改房源的状态类型

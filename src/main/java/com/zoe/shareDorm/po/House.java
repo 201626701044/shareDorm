@@ -10,21 +10,38 @@ import java.util.List;
  */
 public class House {
 
+    // 主键ID
     private Integer houseId;
+    //房源名
     private String houseName;
+    //房东ID
     private Integer memberId;
+    //出租价格
     private Float rentPrice;
-    private String checkInDate;
+    //入住时间
+    private Date checkInDate;
+    //房源类型
     private String houseType;
+    //地区
     private String area;
+    //求租人数
     private String rentNum;
+    //图片
     private String image;
+    //求租方式
     private String way;
+    //详情描述
     private String description;
+    //性别
     private String sex;
+
+    // 0.下架 1.在前端展示系统展示
+    private Integer enableStatus;
 
     //房子是属于哪个人的
     private Member member;
+    // 图片详情图列表，跟商品是多对一的关系
+    private List<HouseImg> houseImgList;
 
     /**
      * 非数据库字段
@@ -64,11 +81,11 @@ public class House {
         this.rentPrice = rentPrice;
     }
 
-    public String getCheckInDate() {
+    public Date getCheckInDate() {
         return checkInDate;
     }
 
-    public void setCheckInDate(String checkInDate) {
+    public void setCheckInDate(Date checkInDate) {
         this.checkInDate = checkInDate;
     }
 
@@ -128,6 +145,14 @@ public class House {
         this.sex = sex;
     }
 
+    public Integer getEnableStatus() {
+        return enableStatus;
+    }
+
+    public void setEnableStatus(Integer enableStatus) {
+        this.enableStatus = enableStatus;
+    }
+
     public Member getMember() {
         return member;
     }
@@ -144,4 +169,11 @@ public class House {
         this.requests = requests;
     }
 
+    public List<HouseImg> getHouseImgList() {
+        return houseImgList;
+    }
+
+    public void setHouseImgList(List<HouseImg> houseImgList) {
+        this.houseImgList = houseImgList;
+    }
 }
